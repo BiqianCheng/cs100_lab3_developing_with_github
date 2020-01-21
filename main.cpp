@@ -1,7 +1,6 @@
-#include <iostream>
+#include "c-echo.h"
+using namespace std;
 
-int main()
-{
-  std::cout << "hello git" << std::endl;
-  return 1;
+int main(int argv, char** argc){
+  cout << echo(argv, argc);
 }
