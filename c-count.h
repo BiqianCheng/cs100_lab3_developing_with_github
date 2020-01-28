@@ -1,17 +1,17 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+#include <iostream>
 
-ADD_SUBDIRECTORY(googletest)
+unsigned int count(const std::string& str) {
+    unsigned int counter = 0;
+    bool on_space = true;
+    
+    for(int i = 0; i < str.size(); i++) {
+        if (std::isspace(str[i]))
+            on_space = true;
+        else if (on_space) {
+            counter++;
+            on_space = false;
+        }
+    }
 
-SET(CMAKE_CXX_STANDARD 11)
-
-ADD_EXECUTABLE(c-echo-count
-    main.cpp
-)
-
-ADD_EXECUTABLE(test
-    test.cpp
-)
-
-TARGET_LINK_LIBRARIES(test gtest)
-TARGET_COMPILE_DEFINITIONS(test PRIVATE gtest_disable_pthreads=ON)
-
+    return counter;
+}
